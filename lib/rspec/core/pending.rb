@@ -57,42 +57,7 @@ module RSpec
       # a failure from the code in the `before` hook will prevent the example
       # from being considered as pending, as the example body wouldn't be
       # executed. If you need to consider hooks as pending as well you can use
-      # the pending metadata as an alternative, e.g. `it "does something", pending: "message".`
-      #
-      #     describe "SomeClass" do
-      #       pending "does not implement something yet" do
-      #         # ...
-      #       end
-      #     end
-      #
-      #   or specify metadata on an example:
-      #
-      #     it "does this", :pending => "is not yet implemented" do
-      #        # ...
-      #     end
-      #
-      #   even without an explicit pending message:
-      #
-      #     it "does something", :pending do
-      #       # ...
-      #     end
-      #
-      # @note There is a difference between using `pending` inside the example
-      # body and `pending` example group alias/`pending` metadata. In the case
-      # when the failure is caused by the code in the `before` hook, the example
-      # would not be considered pending, as the example body wouldn't be reached.
-      # If you intend the failure in the `before` hook to be considered a part
-      # of the example, use the latter.
-      #
-      # @example Failure in `before` hook causes the example to fail
-      #     before { fail 'BOOM' }
-      #     it 'fails' do
-      #       pending 'this never gets executed'
-      #     end
-      #
-      #     pending 'is considered pending' do
-      #       not_implemented
-      #     end
+      # the pending metadata as an alternative, e.g. `it "does something", pending: "message"`.
       def pending(message=nil)
         current_example = RSpec.current_example
 
