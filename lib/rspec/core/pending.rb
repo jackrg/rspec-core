@@ -52,7 +52,12 @@ module RSpec
       #       end
       #     end
       #
-      # @example Alternatively, you can use the `pending` example alias method:
+      # @note When using `pending` inside an example body using this method
+      # hooks such as `before(:example) have already be run, this means that
+      # a failure from the code in the `before` hook will prevent the example
+      # from being considered as pending, as the example body wouldn't be
+      # executed. If you need to consider hooks as pending as well you can use
+      # the pending metadata as an alternative, e.g. `it "does something", pending: "message".`
       #
       #     describe "SomeClass" do
       #       pending "does not implement something yet" do
